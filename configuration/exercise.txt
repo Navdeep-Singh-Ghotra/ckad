@@ -1,0 +1,19 @@
+1. Create a configmap named config with values foo=lala,foo2=lolo
+k create cm config --from-literal=foo=lala --from-literal=foo2=lolo
+
+2. Create and display a configmap from a file
+echo -e "foo3=lili\nfoo4=lele" > config.txt
+kubectl create cm configmap2 --from-file=config.txt
+
+3. Create and display a configmap from a .env file
+echo -e "var1=val1\n# this is a comment\n\nvar2=val2\n#anothercomment" > config.env
+kubectl create cm configmap3 --from-env-file=config.env
+
+4. Create and display a configmap from a file, giving the key 'special'
+echo -e "var3=val3\nvar4=val4" > config4.txt
+kubectl create cm configmap4 --from-file=special=config4.txt
+
+5. Create a configMap called 'options' with the value var5=val5. 
+Create a new nginx pod that loads the value from variable 'var5' in an env variable called 'option'
+
+6. Create a configMap 'anotherone' with values 'var6=val6', 'var7=val7'. Load this configMap as env variables into a new nginx pod
