@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: nginxsecure
+  name: nginxsecure
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginxsecure
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nginxsecure
+    spec:
+      containers:
+      - image: nginx:1.25.3-alpine
+        name: nginx
+        resources: {}
+        securityContext:
+         capabilities:
+          drop:
+          - all
+status: {}

@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  db-password: cGFzc3dk
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: db-credentials
