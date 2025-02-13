@@ -1,0 +1,33 @@
+1. Create a Service named myapp of type ClusterIP that exposes port 80 and maps to the target port 80.
+
+Create a Deployment named myapp that creates 1 replica running the image nginx:1.23.4-alpine. Expose the container port 80. 
+Scale the Deployment to 2 replicas.
+
+Create a temporary Pod using the image busybox:1.36.1 and execute a wget command against the IP of the service.
+
+Change the service type to NodePort so that the Pods can be reached from outside of the cluster. 
+Execute a wget command against the service from outside of the cluster.
+
+
+2. Kate is a developer in charge of implementing a web-based application stack. She is not familiar with Kubernetes, and asked if you could help out. 
+The relevant objects have been created; however, connection to the application cannot be established from within the cluster. 
+Help Kate with fixing the configuration of her YAML manifests.
+
+Navigate to the directory app-a/ch21/troubleshooting of the checked-out GitHub repository bmuschko/ckad-study-guide. 
+Create the objects from the YAML manifest setup.yaml. Inspect the objects in the namespace y72.
+
+Create a temporary Pod using the image busybox:1.36.1 in the namespace y72. The container command should make a wget call to the Service web-app. 
+The wget call will not be able to establish a successful connection to the Service.
+
+Identify the root cause for the connection issue and fix it. Verify the correct behavior by repeating the previous step. 
+The wget call should return a successful response.
+
+3. Create a new Deployment named web that controls a single replica running the image bmuschko/nodejs-hello-world:1.0.0 on port 3000. 
+Expose the Deployment with a Service named web of type ClusterIP. The Service routes traffic to the Pods controlled by the Deployment web. 
+Make a request to the endpoint of the application on the context path /. You should see the message “Hello World.”
+
+Create an Ingress that exposes the path / for the host hello-world.exposed. The traffic should be routed to the Service created earlier. 
+List the Ingress object.
+
+Add an entry in /etc/hosts that maps the load balancer IP address to the host hello-world.exposed. 
+Make a request to http://hello-world.exposed. You should see the message “Hello World.”
