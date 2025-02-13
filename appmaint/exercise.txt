@@ -1,0 +1,8 @@
+1. The Kubernetes administrator in charge of the cluster is planning to upgrade all nodes from Kubernetes 1.8 to 1.28. You defined multiple Kubernetes YAML manifests that operate an application stack. The administrator provided you with a Kubernetes 1.28 test environment. Make sure that all YAML manifests are compatible with Kubernetes version 1.28.
+
+Navigate to the directory app-a/ch13/deprecated of the checked-out GitHub repository bmuschko/ckad-study-guide. Inspect the files deployment.yaml and configmap.yaml in the current directory.
+
+Create the objects from the YAML manifests. Modify the definitions as needed.
+
+Verify that the objects can be instantiated with Kubernetes 1.28.
+
