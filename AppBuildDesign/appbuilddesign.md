@@ -100,9 +100,15 @@ k exec nginx -- /bin/sh -c "ls -l"
 ```
 </details>
 
-###### 5. Create a YAML manifest for a Pod named loop that runs the busybox:1.36.1 image in a container. The container should run the following command: for i in {1..10}; do echo "Welcome $i times"; done. Create the Pod from the YAML manifest. What’s the status of the Pod? Edit the Pod named loop. Change the command to run in an endless loop. Each iteration should echo the current date. Inspect the events and the status of the Pod loop.
+###### 5. Create a YAML manifest for a Pod named loop that runs the busybox:1.36.1 image in a container. The container should run the following command: for i in $(seq 4); do echo "Welcome $i times"; done. Create the Pod from the YAML manifest. What’s the status of the Pod? Edit the Pod named loop. Change the command to run in an endless loop. Each iteration should echo the current date. Inspect the events and the status of the Pod loop.
 <details>
 <summary> Solution</summary>
+```
+k run loop --image=busybox:1.36.1 --dry-run=client -o yaml -- /bin/sh -c 'for i in $(seq 4); do echo "Welcome $i times"; done' > TestFiles/5/5.loop.yaml
+k create -f TestFiles/5/5.loop.yaml
+k run loop-endless --image=busybox:1.36.1 --dry-run=client -o yaml -- /bin/sh -c 'while true; do date; sleep 10; done' > TestFiles/5/5.loop-endless.yaml
+k create -f TestFiles/5/5.loop-endless.yaml 
+k logs loop-endless
 </details>
 
 
