@@ -14,14 +14,10 @@
 
 put answer here
 </details>
+
+###### 2. Modify the Dockerfile from the previous exercise. Change the base image to the tag 20.4-alpine and the working directory to /node. Build the container image from the Dockerfile with the tag nodejs-hello-world:1.1.0. Ensure that container image has been created by listing it.
 <details>
-
-<summary>2. Modify the Dockerfile from the previous exercise. Change the base image to the tag 20.4-alpine and the working directory to /node.
-
-Build the container image from the Dockerfile with the tag nodejs-hello-world:1.1.0.
-
-Ensure that container image has been created by listing it.</summary>
-
+<summary> Solution</summary>
 #### Answer :
 
 put answer here
@@ -30,16 +26,10 @@ put answer here
 
 <details>
 
-<summary>3. Pull the container image alpine:3.18.2 available on Docker Hub.
+###### 3. Pull the container image alpine:3.18.2 available on Docker Hub. Save the container image to the file alpine-3.18.2.tar. Delete the container image. Verify the container image is not listable anymore. Reinstate the container image from the file alpine-3.18.2.tar. Verify that the container image can be listed.</summary>
 
-Save the container image to the file alpine-3.18.2.tar.
-
-Delete the container image. Verify the container image is not listable anymore.
-
-Reinstate the container image from the file alpine-3.18.2.tar.
-
-Verify that the container image can be listed.</summary>
-
+<details>
+<summary> Solution</summary>
 #### Answer :
 
 put answer here
