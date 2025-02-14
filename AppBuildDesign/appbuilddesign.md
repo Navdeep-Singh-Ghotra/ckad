@@ -328,6 +328,12 @@ k logs data-exchange -c sidecar -f
 ###### 12. Create three Pods that use the image nginx:1.25.1. The names of the Pods should be pod-1, pod-2, and pod-3. Assign the label tier=frontend to pod-1 and the label tier=backend to pod-2 and pod-3. All pods should also assign the label team=artemidis. Assign the annotation with the key deployer to pod-1 and pod-3. Use your own name as the value. From the command line, use label selection to find all Pods with the team artemidis or aircontrol and that are considered a backend service.
 <details>
 <summary> Solution</summary>
+```
+k run pod-1 --image=nginx:1.25.1 --labels=tier=frontend,team=artemidis
+k run pod-2 --image=nginx:1.25.1 --labels=tier=backend,team=artemidis
+k run pod-3 --image=nginx:1.25.1 --labels=tier=backend,team=artemidis
+k annotate pod pod-1 pod-3 deployer='Nom' 
+k get po -l tier=backend,'team in (artemidis,aircontrol)' --show-labels
 
 </details>
 
@@ -336,9 +342,24 @@ k logs data-exchange -c sidecar -f
 <details>
 <summary> Solution</summary>
 
-```
-```
+```YAML
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app.kubernetes.io/name: F5-nginx
+    app.kubernetes.io/managed-by: helm
+spec:
+  containers:
+  - image: nginx:1.25.1
+    name: nginx
 
+```
+```
+ k create -f TestFiles/13/13.1.recomendelabels.yaml 
+ k describe po nginx
+ ```
 </details>
 
 
