@@ -17,15 +17,11 @@ Execute a curl or wget command against the application’s endpoint.
 
 Retrieve the container logs.</summary>
 
-### You can add a header
+### Answer :
 
-You can add text within a collapsed section.
+run the command: 
+```k run nginx --image=nginx --dry-run=client -o yaml > 1.yaml```
 
-You can add an image or a code block, too.
-
-```ruby
-   puts "Hello World"
-```
 
 </details>
 
