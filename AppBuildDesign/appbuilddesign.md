@@ -50,5 +50,24 @@ Verify that the container image can be listed.</summary>
 #### Answer :
 
 put answer here
+```YAML
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: busybox
+  name: busybox
+spec:
+  containers:
+  - command:
+    - env
+    image: busybox
+    name: busybox
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+```
 </details>
 
