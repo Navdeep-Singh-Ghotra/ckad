@@ -215,6 +215,7 @@ spec:
   requests:
    storage: 2Gi
 ```
+```
 k create -f TestFiles/9/9.2.pvc.yaml 
 k run nginx-mount --image=nginx --dry-run=client -o yaml > TestFiles/9/9.3.nginx-mount.yaml
 vi nginx-mount.yaml
