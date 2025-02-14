@@ -23,16 +23,21 @@ podman container ls
 wget -O- localhost:1025
 podman logs ac8fec488aba(conatinerID)
 ```
-
-put answer here
 </details>
 
-###### 2. Modify the Dockerfile from the previous exercise. Change the base image to the tag 20.4-alpine and the working directory to /node. Build the container image from the Dockerfile with the tag nodejs-hello-world:1.1.0. Ensure that container image has been created by listing it.
+###### 2. Modify the Dockerfile from the previous exercise. Change the base image to the tag node:current-alpine3.20. Build the container image from the Dockerfile with the tag ckad-app:1.0.1. Ensure that container image has been created by listing it.
 <details>
 <summary> Solution</summary>
 #### Answer :
+```
+podman build -t ckad-app:1.0.1 -f TestFiles/app/Dockerfile
+podman image ls
+podman run -d -p 1025:3000 a110590ab55a(imageID)
+podman container ls
+wget -O- localhost:1025
+podman logs eaa8bcb25c0a(conatinerID) 
 
-put answer here
+```
 
 </details>
 
