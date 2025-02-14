@@ -29,6 +29,7 @@ podman logs ac8fec488aba(conatinerID)
 <details>
 <summary> Solution</summary>
 #### Answer :
+
 ```
 podman build -t ckad-app:1.0.1 -f TestFiles/app/Dockerfile
 podman image ls
@@ -38,7 +39,6 @@ wget -O- localhost:1025
 podman logs eaa8bcb25c0a(conatinerID) 
 
 ```
-
 </details>
 
 
