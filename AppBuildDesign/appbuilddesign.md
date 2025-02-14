@@ -48,18 +48,52 @@ podman logs eaa8bcb25c0a(conatinerID)
 ```
 podman pull alpine:3.18.2
 podman image ls
-podman image save --quiet -o myimage.tar imageID
+podman image save --quiet -o alpine-3.18.2.tar imegeIDc1aabb73d233
 podman rmi imageID
 podman image ls
 podman image load -i alpine-3.18.2.tar
 ```
 </details>
 
-###### Create a new Pod named nginx running the image nginx:1.17.10. Expose the container port 80. The Pod should live in the namespace named ckad. Get the details of the Pod including its IP address. Create a temporary Pod that uses the busybox:1.36.1 image to execute a wget command inside of the container. The wget command should access the endpoint exposed by the nginx container. You should see the HTML response body rendered in the terminal. Get the logs of the nginx container. Add the environment variables DB_URL=postgresql://mydb:5432 and DB_USERNAME=admin to the container of the nginx Pod. Open a shell for the nginx container and inspect the contents of the current directory ls -l. Exit out of the container.
+###### 4. Create a new Pod named nginx running the image nginx:1.17.10. Expose the container port 80. The Pod should live in the namespace named ckad. Get the details of the Pod including its IP address. Create a temporary Pod that uses the busybox:1.36.1 image to execute a wget command inside of the container. The wget command should access the endpoint exposed by the nginx container. You should see the HTML response body rendered in the terminal. Get the logs of the nginx container. Add the environment variables DB_URL=postgresql://mydb:5432 and DB_USERNAME=admin to the container of the nginx Pod. Open a shell for the nginx container and inspect the contents of the current directory ls -l. Exit out of the container.
 
 <details>
 <summary> Solution</summary>
+```
+k get po
+k get ns
+default           Active   11h
+kube-node-lease   Active   11h
+kube-public       Active   11h
+kube-system       Active   11h
+mynamespace       Active   11h
 
+k run nginx --image=nginx --namespace=ckad --port=80
+Error from server (NotFound): namespaces "ckad" not found
+
+k run nginx --image=nginx --namespace=ckad --port=80 --dry=client -op yaml > TestFiles/4/4.1.nginx-pod.yaml
+bash: TestFiles/4/4.1.nginx-pod.yaml: No such file or directory
+mkdir TestFiles/4
+k run nginx --image=nginx --namespace=ckad --port=80 --dry-run=client -o yaml > TestFiles/4/4.1.nginx-pod.yaml
+Error from server (NotFound): error when creating "TestFiles/4/4.1.nginx-pod.yaml": namespaces "ckad" not found
+
+k create namespace ckad --dry-run=client -o yaml > TestFiles/4/4.1.namespace.yaml
+k create -f TestFiles/4/4.1.namespace.yaml 
+namespace/ckad created
+k create -f TestFiles/4/4.1.nginx-pod.yaml
+pod/nginx created
+k get po
+k get pod nginx --namespace=ckad -o wide
+k config get-contexts
+k config set-context --current --namespace=ckad
+k get po
+NAME    READY   STATUS    RESTARTS   AGE
+nginx   1/1     Running   0          3m58s
+k describe po nginx | grep IP:
+k run tmp --image=busybox:1.36.1 -it --rm --restart=Never -- wget -O-  IP
+k logs nginx
+
+```
 </details>
 
 
