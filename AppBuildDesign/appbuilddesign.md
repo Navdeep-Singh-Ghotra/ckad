@@ -228,9 +228,11 @@ spec:
       claimName: logs-pvc
 ```
 ```YAML
-volumeMounts:
-    - mountPath: "/var/log/nginx"
-      name: logs-volume
+spec:
+    containers:
+        volumeMounts:
+        - mountPath: "/var/log/nginx"
+          name: logs-volume
 ```
 ```
 k create -f TestFiles/9/9.3.nginx-mount.yaml 
