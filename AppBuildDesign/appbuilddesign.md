@@ -48,25 +48,13 @@ podman logs eaa8bcb25c0a(conatinerID)
 <summary> Solution</summary>
 #### Answer :
 
-put answer here
-```YAML
-apiVersion: v1
-kind: Pod
-metadata:
-  creationTimestamp: null
-  labels:
-    run: busybox
-  name: busybox
-spec:
-  containers:
-  - command:
-    - env
-    image: busybox
-    name: busybox
-    resources: {}
-  dnsPolicy: ClusterFirst
-  restartPolicy: Always
-status: {}
 ```
+podman pull alpine:3.18.2
+podman image ls
+podman image save --quiet -o myimage.tar imageID
+podman rmi imageID
+podman image ls
+podman image load -i alpine-3.18.2.tar
+
 </details>
 
