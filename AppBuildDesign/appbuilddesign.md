@@ -54,17 +54,8 @@ podman image ls
 podman image load -i alpine-3.18.2.tar
 ```
 </details>
-###### Create a new Pod named nginx running the image nginx:1.17.10. Expose the container port 80. The Pod should live in the namespace named ckad.
 
-Get the details of the Pod including its IP address.
-
-Create a temporary Pod that uses the busybox:1.36.1 image to execute a wget command inside of the container. The wget command should access the endpoint exposed by the nginx container. You should see the HTML response body rendered in the terminal.
-
-Get the logs of the nginx container.
-
-Add the environment variables DB_URL=postgresql://mydb:5432 and DB_USERNAME=admin to the container of the nginx Pod.
-
-Open a shell for the nginx container and inspect the contents of the current directory ls -l. Exit out of the container.
+###### Create a new Pod named nginx running the image nginx:1.17.10. Expose the container port 80. The Pod should live in the namespace named ckad. Get the details of the Pod including its IP address. Create a temporary Pod that uses the busybox:1.36.1 image to execute a wget command inside of the container. The wget command should access the endpoint exposed by the nginx container. You should see the HTML response body rendered in the terminal. Get the logs of the nginx container. Add the environment variables DB_URL=postgresql://mydb:5432 and DB_USERNAME=admin to the container of the nginx Pod. Open a shell for the nginx container and inspect the contents of the current directory ls -l. Exit out of the container.
 
 <details>
 <summary> Solution</summary>
