@@ -4,7 +4,7 @@
 - Use the Helm package manager to deploy existing packages
 - Kustomize
 
-#### Define, build and modify container images
+#### Application deployment
 
 
 ###### 1. Navigate to the directory AppBuildDesign/TestFiles/app. Inspect the Dockerfile. Build the container image from the Dockerfile with the tag ckad-app:1.0.0. Run a container with the container image. Make the application available on port 1025. Execute a curl or wget command against the application’s endpoint.
