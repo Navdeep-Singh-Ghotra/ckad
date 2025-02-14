@@ -161,7 +161,16 @@ k get cj
 <summary> Solution</summary>
 
 ```
-
+k run pod --image=alpine:3.12.0 --restart=Always --dry-run=client -o yaml > TestFiles/8/8.1pod.yaml
+vi add conatiner 2
+add spec.volumes: - name: emptyDIr: {}
+add spec.containers.volumeMounts:- name: mountPath: /etc/pod#
+k craete -f TestFiles/8/8.1pod.yaml 
+k exec -it pod -c pod1 -- /bin/sh
+vi add hello.txt file
+k exec -it pod -c pod2 -- /bin/sh
+cat hello.txt
+exit
 
 ```
 </details>
@@ -172,9 +181,68 @@ k get cj
 <summary> Solution</summary>
 
 ```
-
-
+ vi 9.1.pv.yaml
+ apiVersion: v1
+ ```
+ ```YAML
+kind: PersistentVolume
+metadata:
+ name: logs-pv
+spec:
+ capacity: 
+  storage: 5Gi
+ accessModes:
+  - ReadWriteOnce
+  - ReadOnlyMany
+ hostPath:
+  path: /var/logs
 ```
+```
+k create -f TestFiles/9/9.1.pv.yaml 
+k get pv
+NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   STORAGECLASS   VOLUMEATTRIBUTESCLASS   REASON   AGE
+logs-pv   5Gi        RWO,ROX        Retain           Available                          <unset>                          3s
+```
+```YAML
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata: 
+ name: logs-pvc
+spec: 
+ accessModes:
+  - ReadWriteOnce
+ resources:
+  requests:
+   storage: 2Gi
+```
+k create -f TestFiles/9/9.2.pvc.yaml 
+k run nginx-mount --image=nginx --dry-run=client -o yaml > TestFiles/9/9.3.nginx-mount.yaml
+vi nginx-mount.yaml
+```
+```YAML
+spec:
+  volumes:
+  - name: logs-volume
+    persistentVolumeClaim:
+      claimName: logs-pvc
+```
+```YAML
+volumeMounts:
+    - mountPath: "/var/log/nginx"
+      name: logs-volume
+```
+```
+k create -f TestFiles/9/9.3.nginx-mount.yaml 
+k exec nginx-mount -it -- /bin/sh
+touch //vat/log/my-nginx.log
+k delete po nginx-mount
+k create -f TestFiles/9/9.3.nginx-mount.yaml 
+ls
+access.log  error.log  my-nginx.log
+
+k delete po nginx-mount
+```
+
 </details>
 
 ###### 10. Create a YAML manifest for a Pod named complex-pod. The main application container named app should use the image nginx:1.25.1 and expose the container port 80. Modify the YAML manifest so that the Pod defines an init container named setup that uses the image busybox:1.36.1. The init container runs the command wget -O- google.com. Create the Pod from the YAML manifest. Download the logs of the init container. You should see the output of the wget command. Open an interactive shell to the main application container and run the ls command. Exit out of the container. Force-delete the Pod.
