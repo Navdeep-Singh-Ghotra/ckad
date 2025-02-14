@@ -334,6 +334,7 @@ k run pod-2 --image=nginx:1.25.1 --labels=tier=backend,team=artemidis
 k run pod-3 --image=nginx:1.25.1 --labels=tier=backend,team=artemidis
 k annotate pod pod-1 pod-3 deployer='Nom' 
 k get po -l tier=backend,'team in (artemidis,aircontrol)' --show-labels
+```
 
 </details>
 
