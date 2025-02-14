@@ -59,6 +59,7 @@ podman image load -i alpine-3.18.2.tar
 
 <details>
 <summary> Solution</summary>
+
 ```
 k get po
 k get ns
