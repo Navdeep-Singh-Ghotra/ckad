@@ -16,8 +16,7 @@ Answer :
 
 ```
 Dockerfile  package.json  spec  src
-```
-```podman build -t ckad-app:1.0.0 .
+podman build -t ckad-app:1.0.0 .
 podman image ls
 podman run -d -p 1025:3000 7c01bebf22d2(imageID)
 podman container ls
