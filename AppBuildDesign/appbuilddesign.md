@@ -113,12 +113,42 @@ k logs loop-endless
 ```
 </details>
 
-###### Create a Job named random-hash using the container image alpine:3.17.3 that executes the shell command echo $RANDOM | base64 | head -c 20. Configure the Job to execute with two Pods in parallel. The number of completions should be set to 5. Identify the Pods that executed the shell command. How many Pods do you expect to exist? Retrieve the generated hash from one of the Pods. Delete the Job. Will the corresponding Pods continue to exist?
+###### 6. Create a Job named random-hash using the container image alpine:3.17.3 that executes the shell command echo $RANDOM | base64 | head -c 20. Configure the Job to execute with two Pods in parallel. The number of completions should be set to 5. Identify the Pods that executed the shell command. How many Pods do you expect to exist? Retrieve the generated hash from one of the Pods. Delete the Job. Will the corresponding Pods continue to exist?
 
 <details>
 <summary> Solution</summary>
+
 ```
+k create job random-hash --image=alpine:3.17.3 --dry-run=client -o yaml -- 'bin/sh' -c 'echo $RANDOM | base64 | head -c 20' > TestFiles/6/6.1.randomhash.yaml
+k create -f TestFiles/6/6.1.randomhash.yaml
+k get po
+k logs random-hash-podid
+MzAwMDgK
+vi add .spec.completions .spec.parallelism
+
+
 ```
+</details>
+
+###### 7. Create a new CronJob named google-ping. When executed, the Job should run a curl command for google.com. Pick an appropriate image. The execution should occur every two minutes. Watch the creation of the underlying Jobs managed by the CronJob. Check the command-line options of the relevant command or consult the Kubernetes documentation. Reconfigure the CronJob to retain a history of seven executions. Reconfigure the CronJob to disallow a new execution if the current execution is still running. Consult the Kubernetes documentation for more information.
+ 
+
+<details>
+<summary> Solution</summary>
+
+```
+k create cj google-ping --image=nginx:1.26.3 --schedule='*/2 * * * *' --dry-run=client -o yaml -- /bin/sh -c 'curl google.com' >TestFiles/7/7.1.google-ping.yaml
+k create -f TestFiles/7/7.1.google-ping.yaml 
+k get cj
+NAME          SCHEDULE      TIMEZONE   SUSPEND   ACTIVE   LAST SCHEDULE   AGE
+google-ping   */2 * * * *   <none>     False     0        21s             3m51s
+k get po
+NAME                         READY   STATUS      RESTARTS   AGE
+google-ping-28992566-wfqr4   0/1     Completed   0          2m36s
+google-ping-28992568-tcw9n   0/1     Completed   0          36s
+
+k create cj google-ping --image=nginx:1.26.3 --schedule='*/2 * * * *' --dry-run=client -o yaml -- /bin/sc -c 'curl google.com' >TestFiles/7/7.2.google-ping-history.yaml
+vi add .spec.successfulJobsHistoryLimit, .spec.concurrencyPolicy
 
 </details>
 

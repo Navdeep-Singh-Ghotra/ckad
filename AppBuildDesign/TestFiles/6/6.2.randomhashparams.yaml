@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  creationTimestamp: null
+  name: random-hash-params
+spec:
+  parallelism: 2
+  completions: 5
+  backoffLimit: 4
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - command:
+        - bin/sh
+        - echo $RANDOM | base64 | head -c 20
+        image: alpine:3.17.3
+        name: random-hash
+        resources: {}
+      restartPolicy: Never
+status: {}
