@@ -100,8 +100,10 @@ k exec nginx -- /bin/sh -c "ls -l"
 ```
 </details>
 
-
-
+###### 5. Create a YAML manifest for a Pod named loop that runs the busybox:1.36.1 image in a container. The container should run the following command: for i in {1..10}; do echo "Welcome $i times"; done. Create the Pod from the YAML manifest. What’s the status of the Pod? Edit the Pod named loop. Change the command to run in an endless loop. Each iteration should echo the current date. Inspect the events and the status of the Pod loop.
+<details>
+<summary> Solution</summary>
+</details>
 
 
 
