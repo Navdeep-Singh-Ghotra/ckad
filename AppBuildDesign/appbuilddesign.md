@@ -110,8 +110,17 @@ k create -f TestFiles/5/5.loop.yaml
 k run loop-endless --image=busybox:1.36.1 --dry-run=client -o yaml -- /bin/sh -c 'while true; do date; sleep 10; done' > TestFiles/5/5.loop-endless.yaml
 k create -f TestFiles/5/5.loop-endless.yaml 
 k logs loop-endless
+```
 </details>
 
+###### Create a Job named random-hash using the container image alpine:3.17.3 that executes the shell command echo $RANDOM | base64 | head -c 20. Configure the Job to execute with two Pods in parallel. The number of completions should be set to 5. Identify the Pods that executed the shell command. How many Pods do you expect to exist? Retrieve the generated hash from one of the Pods. Delete the Job. Will the corresponding Pods continue to exist?
+
+<details>
+<summary> Solution</summary>
+```
+```
+
+</details>
 
 
 
