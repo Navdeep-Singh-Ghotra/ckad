@@ -149,14 +149,70 @@ google-ping-28992568-tcw9n   0/1     Completed   0          36s
 
 k create cj google-ping --image=nginx:1.26.3 --schedule='*/2 * * * *' --dry-run=client -o yaml -- /bin/sc -c 'curl google.com' >TestFiles/7/7.2.google-ping-history.yaml
 vi add .spec.successfulJobsHistoryLimit, .spec.concurrencyPolicy
+k create -f Test
+k create -f TestFiles/7/7.2.google-ping-history.yaml
+k get cj
+```
+</details>
+
+###### 8. Create a Pod YAML manifest with two containers that use the image alpine:3.12.0. Provide a command for both containers that keep them running forever. Define a Volume of type emptyDir for the Pod. Container 1 should mount the Volume to path /etc/a, and container 2 should mount the Volume to path /etc/b. Open an interactive shell for container 1 and create the directory data in the mount path. Navigate to the directory and create the file hello.txt with the contents “Hello World.” Exit out of the container. Open an interactive shell for container 2 and navigate to the directory /etc/b/data. Inspect the contents of file hello.txt. Exit out of the container.
+
+<details>
+<summary> Solution</summary>
+
+```
+
+
+```
+</details>
+
+###### 9. Create a PersistentVolume named logs-pv that maps to the hostPath /var/logs. The access mode should be ReadWriteOnce and ReadOnlyMany. Provision a storage capacity of 5Gi. Ensure that the status of the PersistentVolume shows Available. Create a PersistentVolumeClaim named logs-pvc. It uses ReadWriteOnce access. Request a capacity of 2Gi. Ensure that the status of the PersistentVolume shows Bound. Mount the PersistentVolumeClaim in a Pod running the image nginx at the mount path /var/log/nginx. Open an interactive shell to the container and create a new file named my-nginx.log in /var/log/nginx. Exit out of the Pod. Delete the Pod and re-create it with the same YAML manifest. Open an interactive shell to the Pod, navigate to the directory /var/log/nginx, and find the file you created before.
+
+<details>
+<summary> Solution</summary>
+
+```
+
+
+```
+</details>
+
+###### 10. Create a YAML manifest for a Pod named complex-pod. The main application container named app should use the image nginx:1.25.1 and expose the container port 80. Modify the YAML manifest so that the Pod defines an init container named setup that uses the image busybox:1.36.1. The init container runs the command wget -O- google.com. Create the Pod from the YAML manifest. Download the logs of the init container. You should see the output of the wget command. Open an interactive shell to the main application container and run the ls command. Exit out of the container. Force-delete the Pod.
+
+<details>
+<summary> Solution</summary>
+
+```
+
+```
 
 </details>
 
+###### 11. Create a YAML manifest for a Pod named data-exchange. The main application container named main-app should use the image busybox:1.36.1. The container runs a command that writes a new file every 30 seconds in an infinite loop in the directory /var/app/data. The filename follows the pattern {counter++}-data.txt. The variable counter is incremented every interval and starts with the value 1. Modify the YAML manifest by adding a sidecar container named sidecar. The sidecar container uses the image busybox:1.36.1 and runs a command that counts the number of files produced by the main-app container every 60 seconds in an infinite loop. The command writes the number of files to standard output. Define a Volume of type emptyDir. Mount the path /var/app/data for both containers. Create the Pod. Tail the logs of the sidecar container. Delete the Pod.
+
+<details>
+<summary> Solution</summary>
+
+```
+```
+</details>
 
 
+###### 12. Create three Pods that use the image nginx:1.25.1. The names of the Pods should be pod-1, pod-2, and pod-3. Assign the label tier=frontend to pod-1 and the label tier=backend to pod-2 and pod-3. All pods should also assign the label team=artemidis. Assign the annotation with the key deployer to pod-1 and pod-3. Use your own name as the value. From the command line, use label selection to find all Pods with the team artemidis or aircontrol and that are considered a backend service.
+<details>
+<summary> Solution</summary>
 
+</details>
 
+###### 13. Create a Pod with the image nginx:1.25.1 that assigns two recommended labels: one for defining the application name with the value F5-nginx, and one for defining the tool used to manage the application named helm. Render the assigned labels of the Pod object.
 
+<details>
+<summary> Solution</summary>
+
+```
+```
+
+</details>
 
 
 ###### 
