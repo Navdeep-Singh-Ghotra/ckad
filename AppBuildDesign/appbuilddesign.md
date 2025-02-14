@@ -20,7 +20,9 @@ Retrieve the container logs.</summary>
 ### Answer :
 
 run the command: 
-```k run nginx --image=nginx --dry-run=client -o yaml > 1.yaml```
+```bash 
+k run nginx --image=nginx --dry-run=client -o yaml > 1.yaml
+```
 
 
 </details>
