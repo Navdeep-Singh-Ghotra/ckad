@@ -254,7 +254,26 @@ k delete po nginx-mount
 <summary> Solution</summary>
 
 ```
+k run complex-pod --image=nginx:1.25.1 --dry-run=client -o yaml --port=80 > TestFiles/10/10.1.complex-pod.yaml
+vi TestFiles/10/10.1.complex-pod.yaml 
+```
+```
 
+```YAML
+spec:
+  initContainers:
+  - image: busybox:1.36.1
+    name: setup
+    command:
+    - /bin/sh
+    - -c
+    - wget -O- google.com
+```
+```
+k create -f TestFiles/10/10.1.complex-pod.yaml
+k logs complex-pod -c setup
+k exec complex-pod -it -c app -- /bin/sh
+k delete pod complex-pod --grace-period=0 --force
 ```
 
 </details>
@@ -264,7 +283,44 @@ k delete po nginx-mount
 <details>
 <summary> Solution</summary>
 
+```YAML
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: data-exchange
+  name: data-exchange
+spec:
+  volumes:
+  - name: test-vol
+    emptyDir: {}
+  containers:
+  - command: ['sh','-c','counter=1;while true;do touch "/tmp/$counter-data.txt"; counter=$((counter+1)); sleep 5;done']
+    image: busybox:1.36.1
+    name: main-app
+    volumeMounts:
+    - name: test-vol
+      mountPath: "/tmp/"
+    resources: {}
+  - command: ['sh', '-c', 'while true; do ls -d /tmp/*-data.txt \
+              | wc -l; sleep 30; done']
+    image: busybox:1.36.1
+    name: sidecar
+    volumeMounts:
+    - name: test-vol
+      mountPath: "/tmp/"
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
+
 ```
+
+```
+k create -f TestFiles/11/11.1.data-exchange.yaml 
+k logs data-exchange -c sidecar -f
+
 ```
 </details>
 
