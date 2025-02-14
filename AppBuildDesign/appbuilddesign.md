@@ -4,7 +4,7 @@
 - Understand multi-container Pod design patterns (e.g. sidecar, init and others)
 - Utilize persistent and ephemeral volumes
 
-### Define, build and modify container images
+#### Define, build and modify container images
 <details>
 
 <summary>1. Navigate to the directory app-a/ch04/containerized-java-app of the checked-out GitHub repository bmuschko/ckad-study-guide. Inspect the Dockerfile.
@@ -17,14 +17,9 @@ Execute a curl or wget command against the application’s endpoint.
 
 Retrieve the container logs.</summary>
 
-### Answer :
+#### Answer :
 
-run the command: 
-```bash 
-k run nginx --image=nginx --dry-run=client -o yaml > 1.yaml
-```
-
-
+put answer here
 </details>
 <details>
 
@@ -34,13 +29,9 @@ Build the container image from the Dockerfile with the tag nodejs-hello-world:1.
 
 Ensure that container image has been created by listing it.</summary>
 
-### Answer :
+#### Answer :
 
-run the command: 
-```bash 
-k run nginx --image=nginx --dry-run=client -o yaml > 1.yaml
-```
-
+put answer here
 
 </details>
 
@@ -56,13 +47,8 @@ Reinstate the container image from the file alpine-3.18.2.tar.
 
 Verify that the container image can be listed.</summary>
 
-### Answer :
+#### Answer :
 
-run the command: 
-```bash 
-k run nginx --image=nginx --dry-run=client -o yaml > 1.yaml
-```
-
-
+put answer here
 </details>
 
