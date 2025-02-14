@@ -11,9 +11,10 @@
 <details>
 <summary> Solution</summary>
 Answer :
-'''ls'''
-```
-Dockerfile  package.json  spec  src 
+
+```ls```
+
+```Dockerfile  package.json  spec  src 
 ```
 
 
