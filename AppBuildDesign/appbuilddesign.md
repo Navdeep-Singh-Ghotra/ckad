@@ -92,6 +92,9 @@ nginx   1/1     Running   0          3m58s
 k describe po nginx | grep IP:
 k run tmp --image=busybox:1.36.1 -it --rm --restart=Never -- wget -O-  IP
 k logs nginx
+k run nginx --image=nginx --namespace=ckad --port=80 --env="DB_URL=postgresql://mydb:5432" --env="DB_USERNAME=admin" --dry-run=client -o yaml > TestFiles/4/4.1.nginx-pod-withenv.yaml
+k create -f TestFiles/4/4.1.nginx-pod-withenv.yaml 
+k exec nginx -- /bin/sh -c "ls -l"
 
 ```
 </details>
