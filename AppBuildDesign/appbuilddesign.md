@@ -7,7 +7,7 @@
 ### Define, build and modify container images
 <details>
 
-<summary>Navigate to the directory app-a/ch04/containerized-java-app of the checked-out GitHub repository bmuschko/ckad-study-guide. Inspect the Dockerfile.
+<summary>1. Navigate to the directory app-a/ch04/containerized-java-app of the checked-out GitHub repository bmuschko/ckad-study-guide. Inspect the Dockerfile.
 
 Build the container image from the Dockerfile with the tag nodejs-hello-world:1.0.0.
 
@@ -16,6 +16,45 @@ Run a container with the container image. Make the application available on port
 Execute a curl or wget command against the application’s endpoint.
 
 Retrieve the container logs.</summary>
+
+### Answer :
+
+run the command: 
+```bash 
+k run nginx --image=nginx --dry-run=client -o yaml > 1.yaml
+```
+
+
+</details>
+<details>
+
+<summary>2. Modify the Dockerfile from the previous exercise. Change the base image to the tag 20.4-alpine and the working directory to /node.
+
+Build the container image from the Dockerfile with the tag nodejs-hello-world:1.1.0.
+
+Ensure that container image has been created by listing it.</summary>
+
+### Answer :
+
+run the command: 
+```bash 
+k run nginx --image=nginx --dry-run=client -o yaml > 1.yaml
+```
+
+
+</details>
+
+<details>
+
+<summary>3. Pull the container image alpine:3.18.2 available on Docker Hub.
+
+Save the container image to the file alpine-3.18.2.tar.
+
+Delete the container image. Verify the container image is not listable anymore.
+
+Reinstate the container image from the file alpine-3.18.2.tar.
+
+Verify that the container image can be listed.</summary>
 
 ### Answer :
 
