@@ -10,7 +10,6 @@
 ###### 1. Navigate to the directory AppBuildDesign/TestFiles/app. Inspect the Dockerfile. Build the container image from the Dockerfile with the tag ckad-app:1.0.0. Run a container with the container image. Make the application available on port 1025. Execute a curl or wget command against the application’s endpoint.
 <details>
 <summary> Solution</summary>
-Answer :
 
 ```ls```
 
@@ -28,7 +27,6 @@ podman logs ac8fec488aba(conatinerID)
 ###### 2. Modify the Dockerfile from the previous exercise. Change the base image to the tag node:current-alpine3.20. Build the container image from the Dockerfile with the tag ckad-app:1.0.1. Ensure that container image has been created by listing it.
 <details>
 <summary> Solution</summary>
-#### Answer :
 
 ```
 podman build -t ckad-app:1.0.1 -f TestFiles/app/Dockerfile
@@ -46,7 +44,6 @@ podman logs eaa8bcb25c0a(conatinerID)
 
 <details>
 <summary> Solution</summary>
-#### Answer :
 
 ```
 podman pull alpine:3.18.2
@@ -56,6 +53,12 @@ podman rmi imageID
 podman image ls
 podman image load -i alpine-3.18.2.tar
 ```
+</details>
+###### 
+
+<details>
+<summary> Solution</summary>
 
 </details>
+
 
