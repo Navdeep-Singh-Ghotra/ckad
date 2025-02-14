@@ -38,7 +38,7 @@ Server Version: v1.31.6
 | Application Deployment | 1. Use Kubernetes primitives to implement common deployment strategies (e.g. blue/green or canary) 2. Understand Deployments and how to perform rolling updates 3. Use the **Helm** package manager to deploy existing packages 4. Kustomize| 20 |
 | Application Observability and Maintenance | 1. Understand API deprecations 2. Implement probes and health checks 3. Use built-in CLI tools to monitor Kubernetes applications 4. Utilize container logs 5. Debugging in Kubernetes | 15 |
 | Application Environment, Configuration and Security | 1. Discover and use resources that extend Kubernetes (CRD, Operators) 2. Understand authentication, authorization and admission control 3. Understand requests, limits, quotas 4.Understand ConfigMaps 5. Define resource requirements 6. Create & consume Secrets 7. Understand ServiceAccounts 8. Understand Application Security (SecurityContexts, Capabilities, etc.) | 25 |
-| Services and Networking | -Demonstrate basic understanding of NetworkPolicies -Provide and troubleshoot access to applications via services -Use Ingress rules to expose applications | 20 |
+| Services and Networking | - Demonstrate basic understanding of NetworkPolicies - Provide and troubleshoot access to applications via services - Use Ingress rules to expose applications | 20 |
 
 
 
