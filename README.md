@@ -50,26 +50,26 @@ VIM - Vi IMproved 9.1
 | --- | --- | --- | --- | 
 | vim filename.yaml | create and open file in command mode | i | enters insert mode |
 
-| a | insert after cursor |
-| o | insert after curson nextline |
-| u | undo |
-| escape | exit insert mode |
-| hjkl | move cursor |
-| O, ^, $ | Move cursor on line |
-| Sft +ZZ | save and exit |
-| q! | quit save not |
-| d | delete section of file |
-| dd| delete line of text |
-| D | delete from cursor to end of line |
-| Sft + V | Enter visual mode to select block of text |
-| y | yank(copy) |
-| 3yy | copy 3 lines from cursor |
-| p | paste |
-|> | indent selecetd text to right |
-|<| indent selecetd test to left |
-| w or <n>w | move or select a word |
-| <n>G | go to line |
-| :set number| show line numbers |
+| a | insert after cursor |o | insert after curson nextline |
+
+| u | undo |escape | exit insert mode |
+
+| hjkl | move cursor |O, ^, $ | Move cursor on line |
+
+| Sft +ZZ | save and exit |q! | quit save not |
+
+| d | delete section of file |dd| delete line of text |
+
+| D | delete from cursor to end of line |Sft + V | Enter visual mode to select block of text |
+
+| y | yank(copy) | 3yy | copy 3 lines from cursor |
+
+| p | paste |> | indent selecetd text to right |
+
+|<| indent selecetd test to left |w or <n>w | move or select a word |
+
+| <n>G | go to line |:set number| show line numbers |
+
 
 
 
