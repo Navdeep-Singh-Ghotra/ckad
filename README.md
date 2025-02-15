@@ -47,7 +47,7 @@ sudo apt install vim
 VIM - Vi IMproved 9.1 
 
 | Command | Effect | Command | Effect |
-| --- | --- | 
+| --- | --- | --- | --- | 
 | vim filename.yaml | create and open file in command mode | i | enters insert mode |
 
 | a | insert after cursor |
